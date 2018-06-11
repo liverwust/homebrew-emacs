@@ -32,12 +32,19 @@ class Emacs < Formula
 
   depends_on "pkg-config" => :build
   depends_on "gnutls"
+  depends_on :x11 => :optional
   depends_on "dbus" => :optional
   depends_on "librsvg" => :optional
   # Emacs does not support ImageMagick 7:
   # Reported on 2017-03-04: https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25967
   depends_on "imagemagick@6" => :optional
   depends_on "mailutils" => :optional
+
+  # https://github.com/Homebrew/homebrew/issues/37803
+  if build.with? "x11"
+    depends_on "freetype" => :recommended
+    depends_on "fontconfig" => :recommended
+  end
 
   def install
     args = %W[
@@ -47,7 +54,6 @@ class Emacs < Formula
       --infodir=#{info}/emacs
       --prefix=#{prefix}
       --with-gnutls
-      --without-x
     ]
 
     if build.with? "libxml2"
@@ -83,6 +89,16 @@ class Emacs < Formula
     if build.with? "cocoa"
       args << "--with-ns" << "--disable-ns-self-contained"
     else
+      if build.with? "x11"
+        # These libs are not specified in xft's .pc. See:
+        # https://trac.macports.org/browser/trunk/dports/editors/emacs/Portfile#L74
+        # https://github.com/Homebrew/homebrew/issues/8156
+        ENV.append "LDFLAGS", "-lfreetype -lfontconfig"
+        args << "--with-x"
+        args << "--with-gif=no" << "--with-tiff=no" << "--with-jpeg=no"
+      else
+        args << "--without-x"
+      end
       args << "--without-ns"
     end
 
