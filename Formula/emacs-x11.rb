@@ -1,4 +1,4 @@
-class Emacs < Formula
+class EmacsX11 < Formula
   desc "GNU Emacs text editor"
   homepage "https://www.gnu.org/software/emacs/"
   url "https://ftp.gnu.org/gnu/emacs/emacs-27.2.tar.xz"
