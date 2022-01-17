@@ -6,14 +6,6 @@ class EmacsX11 < Formula
   sha256 "b4a7cc4e78e63f378624e0919215b910af5bb2a0afc819fad298272e9f40c1b9"
   license "GPL-3.0-or-later"
 
-  bottle do
-    sha256 arm64_big_sur: "f08cd18fa19f49b85606cc4a871272ef4ff9da656c4c952bd91ac03a70dbb0e3"
-    sha256 big_sur:       "5d3af874e5acd76ddc881406ed1e7db8b84f96e01812961f3bee347d278a28ac"
-    sha256 catalina:      "53b0d78af688a20e12e89751217c9da81cc9621222f289836d44011762355879"
-    sha256 mojave:        "4b3cd25d5f6977ecad49d9b5ebd2dec3c7e41efa8f4f22d2805917e0024cf3af"
-    sha256 x86_64_linux:  "3a22201d4ecf2d32fc7a0d402e14e20ce043bc25b6ac53ec15d48f585e51c9e2"
-  end
-
   head do
     url "https://github.com/emacs-mirror/emacs.git"
 
@@ -26,6 +18,7 @@ class EmacsX11 < Formula
   depends_on "gnutls"
   depends_on "jansson"
   depends_on "libx11"
+  depends_on "libxaw"
   depends_on "libxcb"
   depends_on "libxt"
   depends_on "libxext"
