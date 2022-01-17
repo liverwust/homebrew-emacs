@@ -1,15 +1,8 @@
-# Homebrew Core
+# Emacs with X11
 
-Core formulae for the Homebrew package manager.
+Tap for the Homebrew package manager, to provide Emacs with X11.
 
-Core formulae for the Linuxbrew package manager (Homebrew on Linux or Windows 10 Subsystem for Linux) are in [Homebrew/linuxbrew-core](https://github.com/Homebrew/linuxbrew-core).
+This work is not my own; see https://julienchastang.com/post/x11-update/
 
- [Homebrew/discussions (forum)](https://github.com/homebrew/discussions/discussions)
-
-## How do I install these formulae?
-
-Just `brew install <formula>`. This is the default tap for Homebrew and is installed by default.
-
-## More Documentation, Troubleshooting, Contributing, Security, Community, Donations, License and Sponsors
-
-See these sections in [Homebrew/brew's README](https://github.com/Homebrew/brew#homebrew).
+This fork removes all extraneous packages and provides this formula in a
+tap, rather than a complete fork of homebrew-core.
